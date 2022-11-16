@@ -1,0 +1,25 @@
+node {
+
+    stage('git clone') {
+        git branch: 'main', credentialsId: 'git', url: 'https://github.com/venkata249/kumari.git'
+    }
+    stage('maven version') {
+       sh 'mvn --version'
+    }
+	stage('java version') {
+        sh 'java --version'
+    }
+	stage('maven validate') {
+        sh 'mvn validate' 
+    }
+	stage('maven compile') {
+        sh 'mvn compile'
+    }
+	stage('maven test') {
+       sh 'mvn test' 
+    }
+	stage('maven package') {
+        sh 'mvn package'
+    }
+}
+
